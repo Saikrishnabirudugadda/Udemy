@@ -1,7 +1,7 @@
 import React, {useState, useEffect} from "react"; 
 // import moment from 'moment'
 // import Calendar from 'ciqu-react-calendar'
-// import { DatePicker } from '@y0c/react-datepicker';
+
 import ArticleListComp from "./articleListComp";
 function LectureDisplayComp(props) {
 
@@ -37,19 +37,6 @@ const setArticleToListState = () =>{
   const removeAtricleComp = () =>{
     const lecture = {...lectureObj,...{articleStatus: false}};
     updateLectureObj(lecture);
-
-  //  const onChangeDate = (value, inputValue) => {
-  //     console.log(value.format('YYYY-MM-DD'))
-  //     this.setState({value});
-  //   }
-  
-  //   const onOpenChangeDate = (status) => {
-  //     console.log('open status: ' + status);
-  //   }
-  
-  //   const onDisabledDate = (currentDate, inputValue) => {
-  //     return false;
-  //   }
 }
 
 
@@ -64,18 +51,9 @@ const setArticleToListState = () =>{
                     <button id = {"del" +  props.lectureObj.id} onClick = {handleOnRemoveLec} >
                         <span className="glyphicon glyphicon-remove"></span>Remove</button>
                     <button onClick = {setArticleToListState} >Add content</button>
-                    {/* <div style={{height: '80px'}}>
-                    <Calendar
-                      onChange={onChangeDate}
-                      value={moment()}
-                      allowClear={true}
-                      disabled={false}
-                      placeholder={'Select start date'}
-                      format={'YYYY-MM-DD'}
-                      onOpenChange={onOpenChangeDate}
-                      disabledDate={onDisabledDate}
-                    />
-                      <DatePicker dateFormat = "DD/MM/YYYY" startPlaceholder = "Select start date" endPlaceholder = "Select end date"/>
+                    {/* <div className = "displayStartAndEndDate">
+                    <label>Start date : {lectureObj.startDate}</label> 
+                    <label>End date : {lectureObj.endDate} </label>
                     </div> */}
                     {
                         lectureObj.articleStatus && <ArticleListComp key = {lectureObj.id + "articleList"} articleArr= {lectureObj.article} 
@@ -85,6 +63,7 @@ const setArticleToListState = () =>{
                     
             </div> 
         </div> 
+        
     );
   }
   

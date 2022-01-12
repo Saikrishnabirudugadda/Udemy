@@ -19,7 +19,7 @@ function App() {
   }, [])
   console.log(lectureArr);
   function addNewLecture (event){
-    updateLectureArr([...lectureArr, { id: createUUID(), lectureState: "EDITLECNAME", lectureName: "", articleStatus: false, article: []}]);
+    updateLectureArr([...lectureArr, { id: createUUID(), startDate: "", endDate: "", lectureState: "EDITLECNAME", lectureName: "", articleStatus: false, article: []}]);
   }
 
   const handleOnSave = (lectureObj) =>{
