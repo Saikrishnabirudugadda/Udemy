@@ -5,15 +5,15 @@ import LinearProgress from '@mui/material/LinearProgress';
 import LectureInputComp from './lectureInputComp.js';
 import LectureDisplayComp from './lectureDisplayComp';
 
-
 function App() {
   const [lectureArr, updateLectureArr] = useState([]);
+  const [loadingStatus, updateLoadingStatus] = useState('loading')
   useEffect(() =>{
 
     const getLectureData = () =>{
       fetch('https://jsonblob.com/api/jsonBlob/929962219803000832').then( response => response.json()).then((data) => 
-      updateLectureArr(data))  
-      return <LinearProgress />;
+      updateLectureArr(data))
+      updateLoadingStatus('loaded');  
   };
   getLectureData();
   }, [])
@@ -48,6 +48,7 @@ function createUUID(){
                     <input type = "button"   id = "addNewLecture" onClick={addNewLecture} value = "ADD" ></input>
                     <button id = "saveLectures" >Save</button>
           </div>
+          {loadingStatus === 'loading' && <LinearProgress color="secondary" />}
           {lectureArr.map((lecObj, index) =>{
             return lecObj.lectureState === 'EDITLECNAME' ? 
             <LectureInputComp key = {lecObj.id} lectureObj = {lecObj} lecNum = {index + 1}  onSave = {handleOnSave} onRemoveLec = {handleOnRemoveLec} /> :
