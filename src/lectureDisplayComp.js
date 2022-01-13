@@ -51,10 +51,10 @@ const setArticleToListState = () =>{
                     <button id = {"del" +  props.lectureObj.id} onClick = {handleOnRemoveLec} >
                         <span className="glyphicon glyphicon-remove"></span>Remove</button>
                     <button onClick = {setArticleToListState} >Add content</button>
-                    {/* <div className = "displayStartAndEndDate">
-                    <label>Start date : {lectureObj.startDate}</label> 
-                    <label>End date : {lectureObj.endDate} </label>
-                    </div> */}
+                    <div className = "displayStartAndEndDate">
+                    <label>Start date : {lectureObj.startDate.toString().slice(4, 15)}</label><br></br>
+                    <label>End date : {lectureObj.endDate.toString().slice(4, 15)} </label>
+                    </div>
                     {
                         lectureObj.articleStatus && <ArticleListComp key = {lectureObj.id + "articleList"} articleArr= {lectureObj.article} 
                         onHandleRemoveArtcileComp = {removeAtricleComp} onHandleArticleEditOrDisplayState = {setArticleToEditOrDisplayState} />
